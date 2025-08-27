@@ -1,0 +1,11 @@
+# Model configuration
+runner_mode: lmstudio  # lmstudio | llama_cpp | ollama
+lmstudio_base_url: http://host.docker.internal:1234
+small_model: Qwen2.5-Coder-1.5B-instruct-Q4_K_M
+medium_model: Qwen2.5-Coder-7B-instruct-Q4_K_M
+large_model: Qwen2.5-Coder-14B-instruct-Q4_K_M
+embedding_model: bge-base-en
+max_context_tokens:
+  small: 8192
+  medium: 16384
+  large: 32768

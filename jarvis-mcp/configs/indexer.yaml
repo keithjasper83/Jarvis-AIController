@@ -1,0 +1,12 @@
+# Indexer configuration
+include:
+  - '**/*.py'
+  - '**/*.md'
+  - '**/*.json'
+exclude:
+  - '**/node_modules/**'
+  - '**/.git/**'
+languages:
+  - python
+  - markdown
+  - json

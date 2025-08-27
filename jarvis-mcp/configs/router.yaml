@@ -1,0 +1,14 @@
+# Router policies
+policies:
+  default_tier: small
+  infer_tier:
+    task_kind:
+      scaffold: small
+      prime: medium
+      generate: medium
+      review: medium
+      refactor: large
+      tests: medium
+      plan: small
+      explain: medium
+    needs_index: large

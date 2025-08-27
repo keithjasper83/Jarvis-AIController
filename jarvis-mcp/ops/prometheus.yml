@@ -1,0 +1,18 @@
+global:
+  scrape_interval: 15s
+scrape_configs:
+  - job_name: 'router'
+    static_configs:
+      - targets: ['router:8500']
+  - job_name: 'indexer'
+    static_configs:
+      - targets: ['indexer:8600']
+  - job_name: 'model-small'
+    static_configs:
+      - targets: ['model-small:8611']
+  - job_name: 'model-medium'
+    static_configs:
+      - targets: ['model-medium:8622']
+  - job_name: 'model-large'
+    static_configs:
+      - targets: ['model-large:8633']

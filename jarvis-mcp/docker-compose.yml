@@ -1,0 +1,98 @@
+version: '3.8'
+services:
+  router:
+    build: ./services/router
+    ports:
+      - "8500:8500"
+    env_file:
+      - .env
+    volumes:
+      - ./project:/workspace/project
+      - ./models:/models
+      - ./data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8500/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  indexer:
+    build: ./services/indexer
+    ports:
+      - "8600:8600"
+    env_file:
+      - .env
+    volumes:
+      - ./project:/workspace/project
+      - ./data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8600/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  model-small:
+    build: ./services/model-small
+    ports:
+      - "8611:8611"
+    env_file:
+      - .env
+    volumes:
+      - ./models:/models
+      - ./data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8611/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  model-medium:
+    build: ./services/model-medium
+    ports:
+      - "8622:8622"
+    env_file:
+      - .env
+    volumes:
+      - ./models:/models
+      - ./data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8622/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  model-large:
+    build: ./services/model-large
+    ports:
+      - "8633:8633"
+    env_file:
+      - .env
+    volumes:
+      - ./models:/models
+      - ./data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8633/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./ops/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+  grafana:
+    image: grafana/grafana:latest
+    volumes:
+      - ./ops/grafana-provisioning:/etc/grafana/provisioning
+    ports:
+      - "3000:3000"
+volumes:
+  project:
+  models:
+  data:

@@ -1,0 +1,3 @@
+# System prompt for small tier (scaffolder)
+Focus on directory maps, stub files, README todos, minimal code to compile, no heavy logic.
+Output diffs in ops-safe format: a file manifest + patch blocks.

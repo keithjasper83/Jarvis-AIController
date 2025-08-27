@@ -1,0 +1,15 @@
+### Example MCP requests
+
+POST http://localhost:8500/mcp.plan
+Content-Type: application/json
+
+{
+  "task": "scaffold a web API for todo management"
+}
+
+POST http://localhost:8500/mcp.scaffold
+Content-Type: application/json
+
+{
+  "manifest": ["api.py", "models.py", "README.md"]
+}
