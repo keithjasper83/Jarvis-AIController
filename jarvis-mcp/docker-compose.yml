@@ -8,7 +8,7 @@ services:
       - .env
     volumes:
       - ./project:/workspace/project
-      - ./models:/models
+      - ${MODELS_PATH}:/models
       - ./data:/data
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8500/health"]
@@ -36,7 +36,7 @@ services:
     env_file:
       - .env
     volumes:
-      - ./models:/models
+      - ${MODELS_PATH}:/models
       - ./data:/data
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8611/health"]
@@ -50,7 +50,7 @@ services:
     env_file:
       - .env
     volumes:
-      - ./models:/models
+      - ${MODELS_PATH}:/models
       - ./data:/data
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8622/health"]
@@ -64,7 +64,7 @@ services:
     env_file:
       - .env
     volumes:
-      - ./models:/models
+      - ${MODELS_PATH}:/models
       - ./data:/data
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8633/health"]
