@@ -11,7 +11,15 @@ $tagFile = "$repoPath\last_deployed_tag.txt"
 cd $repoPath
 
 git fetch --all
-$latestTag = git tag --sort=-creatordate | Select-Object -Last 1
+# Explicitly fetch tags
+git fetch --tags
+
+$tags = git tag --sort=-creatordate
+if ($tags.Count -eq 0) {
+    Write-Host "No tags found in repository. Exiting."
+    exit 1
+}
+$latestTag = $tags | Select-Object -Last 1
 
 # Read last deployed tag
 if (Test-Path $tagFile) {
