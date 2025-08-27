@@ -10,4 +10,3 @@ if command -v pytest &> /dev/null; then
 fi
 
 echo "Local tests passed (no Docker required)"
-
