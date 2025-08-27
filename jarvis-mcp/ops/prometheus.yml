@@ -16,3 +16,4 @@ scrape_configs:
   - job_name: 'model-large'
     static_configs:
       - targets: ['model-large:8633']
+
